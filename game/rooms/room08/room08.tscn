@@ -1,0 +1,415 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_terrain.gd" type="Script" id=1]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_background.gd" type="Script" id=2]
+[ext_resource path="res://game/fonts/caslonantique.tres" type="DynamicFont" id=3]
+[ext_resource path="res://game/characters/mark/mark.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=5]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=6]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=7]
+[ext_resource path="res://game/rooms/room08/room8background.png" type="Texture" id=8]
+[ext_resource path="res://game/rooms/room08/locked_button.png" type="Texture" id=9]
+[ext_resource path="res://game/rooms/room08/door.png" type="Texture" id=10]
+[ext_resource path="res://game/rooms/room08/unlocked_button.png" type="Texture" id=11]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 4.26837, 653.779, 86.2684, 608.779, 87.2684, 635.779, 1260.27, 808.779, 3.26837, 810.779, 112.268, 621.779, 642.268, 624.779, 1259.27, 687.779, 642.268, 586.779, 790.268, 585.779, 791.268, 624.779, 1154.27, 622.779 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 0, 2 ), PoolIntArray( 3, 2, 5, 6, 7 ), PoolIntArray( 6, 8, 9, 10 ), PoolIntArray( 7, 6, 10 ), PoolIntArray( 7, 10, 11 ) ]
+outlines = [ PoolVector2Array( 4.26837, 653.779, 86.2684, 608.779, 87.2684, 635.779, 112.268, 621.779, 642.268, 624.779, 642.268, 586.779, 790.268, 585.779, 791.268, 624.779, 1154.27, 622.779, 1259.27, 687.779, 1260.27, 808.779, 3.26837, 810.779 ) ]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("door1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("door2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("door3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("door4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("door3:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("door4:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "door_close"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("door1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 547, 203 ), Vector2( 547, 203 ), Vector2( 723, 203 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("door2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 899, 203 ), Vector2( 899, 203 ), Vector2( 723, 203 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("door3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 547, 203 ), Vector2( 723, 203 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("door4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 899, 203 ), Vector2( 723, 203 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "door_open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("door1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ), Vector2( 723, 203 ), Vector2( 547, 203 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("door2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ), Vector2( 723, 203 ), Vector2( 899, 203 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("door3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ), Vector2( 547, 203 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("door4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 723, 203 ), Vector2( 899, 203 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 31, 30.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 31.5, 31 )
+
+[node name="room8" type="Node2D"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+global_id = "room8"
+esc_script = "res://game/rooms/room08/esc/room08.esc"
+player_scene = ExtResource( 4 )
+camera_limits = [ Rect2( 0, 0, 1280, 555 ) ]
+
+[node name="walkable_area" type="Navigation2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="platform" type="NavigationPolygonInstance" parent="walkable_area"]
+position = Vector2( 6.73163, -264.779 )
+navpoly = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="player_start" type="Position2D" parent="."]
+position = Vector2( 76.7617, 437.649 )
+script = ExtResource( 7 )
+global_id = "r8_player_start"
+is_start_location = true
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 1289.0
+margin_bottom = 555.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="background"]
+margin_right = 48.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+text = "Room 8"
+
+[node name="Label2" type="Label" parent="background"]
+margin_left = 835.0
+margin_top = 12.0
+margin_right = 1133.0
+margin_bottom = 201.0
+custom_fonts/font = ExtResource( 3 )
+text = "This room demonstrates mixing Escoria
+with an external GDScript puzzle.
+Global variables are set by the puzzle
+when completed that are referenced 
+by future Escoria script code to animate
+the door opening etc.
+
+Unlocking the puzzle disables (and
+hides) the locked button, showing the
+unlocked graphic underneath."
+
+[node name="Hotspots" type="Node" parent="."]
+
+[node name="l_door" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+global_id = "r8_l_exit"
+esc_script = "res://game/rooms/room08/esc/left_exit.esc"
+is_exit = true
+tooltip_name = "Exit"
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/l_door"]
+polygon = PoolVector2Array( 1, 420, 1, 107, 105, 63, 108, 352 )
+
+[node name="Position2D" type="Position2D" parent="Hotspots/l_door"]
+position = Vector2( 45.47, 383.99 )
+script = ExtResource( 7 )
+
+[node name="m_door" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+position = Vector2( 0, -1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+global_id = "r8_m_door"
+esc_script = "res://game/rooms/room08/esc/middle_exit.esc"
+is_exit = true
+tooltip_name = "Exit"
+inventory_texture = ExtResource( 10 )
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/m_door"]
+polygon = PoolVector2Array( 630, 349, 628, 51, 815, 51, 815, 349 )
+
+[node name="Position2D" type="Position2D" parent="Hotspots/m_door"]
+position = Vector2( 724, 354 )
+script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/m_door"]
+anims/RESET = SubResource( 5 )
+anims/door_close = SubResource( 2 )
+anims/door_open = SubResource( 3 )
+
+[node name="door1" type="Sprite" parent="Hotspots/m_door"]
+position = Vector2( 723, 203 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="door2" type="Sprite" parent="Hotspots/m_door"]
+position = Vector2( 723, 203 )
+scale = Vector2( -1, -1 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="door3" type="Sprite" parent="Hotspots/m_door"]
+position = Vector2( 723, 203 )
+scale = Vector2( 1, -1 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="door4" type="Sprite" parent="Hotspots/m_door"]
+position = Vector2( 723, 203 )
+scale = Vector2( -1, 1 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="door_background" type="Polygon2D" parent="Hotspots/m_door"]
+z_index = -2
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 635, 55, 810, 56, 810, 350, 634, 350 )
+
+[node name="r8_mini_puzzle_unlocked" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+script = ExtResource( 5 )
+global_id = "r8_mini_puzzle_unlocked"
+inventory_texture = ExtResource( 11 )
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="unlocked_button" type="Sprite" parent="Hotspots/r8_mini_puzzle_unlocked"]
+position = Vector2( 527, 190 )
+texture = ExtResource( 11 )
+
+[node name="r8_mini_puzzle_button" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+script = ExtResource( 5 )
+global_id = "r8_mini_puzzle_button"
+esc_script = "res://game/rooms/room08/esc/button_puzzle.esc"
+tooltip_name = "Button"
+default_action = "use"
+inventory_texture = ExtResource( 9 )
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="locked_button" type="Sprite" parent="Hotspots/r8_mini_puzzle_button"]
+position = Vector2( 527, 190 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/r8_mini_puzzle_button"]
+position = Vector2( 526, 191.5 )
+shape = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="Hotspots/r8_mini_puzzle_button"]
+position = Vector2( 532, 370 )
+script = ExtResource( 7 )
+
+[node name="button_puzzle" type="Label" parent="Hotspots/r8_mini_puzzle_button"]
+margin_left = 488.0
+margin_top = 128.0
+margin_right = 572.0
+margin_bottom = 149.0
+custom_fonts/font = ExtResource( 3 )
+text = "Run puzzle"
+
+[node name="r8_reset_puzzle_button" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+position = Vector2( -139.185, 0 )
+script = ExtResource( 5 )
+global_id = "r8_button_reset_puzzle"
+esc_script = "res://game/rooms/room08/esc/button_reset_puzzle.esc"
+tooltip_name = "Button"
+default_action = "use"
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="Position2D" type="Position2D" parent="Hotspots/r8_reset_puzzle_button"]
+position = Vector2( 511.185, 370 )
+script = ExtResource( 7 )
+
+[node name="reset_puzzle" type="Label" parent="Hotspots/r8_reset_puzzle_button"]
+margin_left = 466.185
+margin_top = 126.0
+margin_right = 560.185
+margin_bottom = 147.0
+custom_fonts/font = ExtResource( 3 )
+text = "Reset puzzle"
+
+[node name="Sprite3" type="Sprite" parent="Hotspots/r8_reset_puzzle_button"]
+position = Vector2( 139.185, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/r8_reset_puzzle_button"]
+position = Vector2( 510.685, 190 )
+shape = SubResource( 6 )
+
+[node name="Node" type="Node" parent="Hotspots"]

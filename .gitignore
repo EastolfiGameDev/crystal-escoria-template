@@ -2,7 +2,10 @@
 # - https://github.com/github/gitignore/blob/master/Godot.gitignore
 
 # Godot-specific ignores
-.import/
+bin
+*.import
+.import
+.godot
 
 # Builds/export directory
 builds
@@ -12,3 +15,10 @@ builds
 
 # OSX 
 .DS_Store
+
+# Local overrides to project.godot go in override.cfg.
+/override.cfg
+
+# Disable accidental changes to the default bus layout. If a change to this
+# file is required, use git add --force
+addons/escoria-core/default_bus_layout.tres

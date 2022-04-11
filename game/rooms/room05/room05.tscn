@@ -1,0 +1,226 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_terrain.gd" type="Script" id=1]
+[ext_resource path="res://game/items/inventory/r5_empty_sheet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/fonts/caslonantique.tres" type="DynamicFont" id=3]
+[ext_resource path="res://game/characters/mark/mark.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/items/inventory/r5_pen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=6]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=7]
+[ext_resource path="res://game/items/inventory/r5_wrench.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/rooms/room05/water_droplet.png" type="Texture" id=9]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=11]
+[ext_resource path="res://game/rooms/room05/room5background.png" type="Texture" id=13]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_background.gd" type="Script" id=15]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1187, 641, 1182.53, 588.863, 1269.59, 622.872, 1267, 801, 12, 706, 15, 646, 93, 610, 96, 642, 15, 802, 129.634, 615.792, 1155, 615 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 10, 0, 3, 8, 7 ) ]
+outlines = [ PoolVector2Array( 12, 706, 15, 646, 93, 610, 96, 642, 129.634, 615.792, 1155, 615, 1187, 641, 1182.53, 588.863, 1269.59, 622.872, 1267, 801, 15, 802 ) ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 36, 33.5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "start_water"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "stop_water"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = -30.0
+angular_velocity = 61.72
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = -90.0
+
+[node name="room5" type="Node2D"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+global_id = "room5"
+esc_script = "res://game/rooms/room05/esc/room05.esc"
+player_scene = ExtResource( 4 )
+camera_limits = [ Rect2( 0, 0, 1280, 555 ) ]
+
+[node name="ESCBackground" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 550.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+script = ExtResource( 15 )
+
+[node name="room_label" type="Label" parent="ESCBackground"]
+margin_right = 82.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "ROOM 5"
+
+[node name="background_for_text" type="Polygon2D" parent="ESCBackground"]
+color = Color( 0.364706, 0.109804, 0.447059, 1 )
+polygon = PoolVector2Array( 128, 4, 555, 4, 555, 315, 128, 315 )
+
+[node name="room_details1" type="Label" parent="ESCBackground/background_for_text"]
+margin_left = 141.0
+margin_top = 7.0
+margin_right = 427.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 3 )
+text = "This room demonstrates inventory
+objects. Use the wrench to fix the pipe.
+Combine the pen and paper in your
+inventory to create a new object which
+will be used in the next room."
+
+[node name="room_details2" type="Label" parent="ESCBackground/background_for_text"]
+margin_left = 138.0
+margin_top = 136.0
+margin_right = 580.0
+margin_bottom = 301.0
+custom_fonts/font = ExtResource( 3 )
+text = "One of the settings inside Godot's settings is 
+\"Escoria/UI/Items autoregister path\".
+Inventory items need to be ESCItems saved as 
+scenes, and these scenes need to be located in this path.
+If you use the command \"inventory_add xyz\", this will
+automatically instantiate the xyz object from this folder 
+into your inventory."
+
+[node name="pen_label" type="Label" parent="."]
+margin_left = 844.0
+margin_top = 470.0
+margin_right = 1212.0
+margin_bottom = 539.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pickup & combine these together in the inventory
+Note: you can combine in both directions
+(i.e. pen with paper, or paper with pen)"
+
+[node name="pipe_label" type="Label" parent="."]
+margin_left = 142.828
+margin_top = 492.556
+margin_right = 410.828
+margin_bottom = 537.556
+custom_fonts/font = ExtResource( 3 )
+text = "Pickup & use on pipe
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walkable_area" type="Navigation2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="platform" type="NavigationPolygonInstance" parent="walkable_area"]
+position = Vector2( 1, -264 )
+navpoly = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hotspots" type="Node" parent="."]
+
+[node name="l_door" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "r5_l_exit"
+esc_script = "res://game/rooms/room05/esc/left_exit.esc"
+is_exit = true
+tooltip_name = "Left exit"
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/l_door"]
+position = Vector2( 53, -12 )
+polygon = PoolVector2Array( -52, 432, -53, 121, 53, 79, 55, 365 )
+
+[node name="Position2D" type="Position2D" parent="Hotspots/l_door"]
+position = Vector2( 57, 381 )
+script = ExtResource( 11 )
+
+[node name="r_door" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+position = Vector2( -1, 0 )
+script = ExtResource( 7 )
+global_id = "r5_r_exit"
+esc_script = "res://game/rooms/room05/esc/right_exit.esc"
+is_exit = true
+tooltip_name = "Right exit"
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/r_door"]
+polygon = PoolVector2Array( 1174, 358, 1175, 62, 1280, 109, 1280, 419 )
+
+[node name="Position2D" type="Position2D" parent="Hotspots/r_door"]
+position = Vector2( 1228, 382 )
+script = ExtResource( 11 )
+
+[node name="pipe" type="Area2D" parent="Hotspots"]
+pause_mode = 1
+position = Vector2( -7, -1 )
+script = ExtResource( 7 )
+global_id = "r5_pipe"
+esc_script = "res://game/rooms/room05/esc/pipe.esc"
+tooltip_name = "pipe"
+default_action = "look"
+dialog_color = Color( 1, 1, 1, 1 )
+animations = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/pipe"]
+position = Vector2( 618, 243.5 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/pipe"]
+anims/start_water = SubResource( 7 )
+anims/stop_water = SubResource( 8 )
+
+[node name="Particles2D" type="Particles2D" parent="Hotspots/pipe"]
+position = Vector2( 593, 244 )
+emitting = false
+lifetime = 1.5
+process_material = SubResource( 6 )
+texture = ExtResource( 9 )
+
+[node name="ESCLocation" type="Position2D" parent="Hotspots/pipe"]
+position = Vector2( 625, 393 )
+script = ExtResource( 11 )
+
+[node name="wrench" parent="Hotspots" instance=ExtResource( 8 )]
+
+[node name="paper" parent="Hotspots" instance=ExtResource( 2 )]
+
+[node name="pen" parent="Hotspots" instance=ExtResource( 5 )]
+
+[node name="player_start" type="Position2D" parent="."]
+position = Vector2( 76.7617, 437.649 )
+script = ExtResource( 11 )
+global_id = "r5_player_start"
+is_start_location = true
